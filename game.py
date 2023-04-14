@@ -54,6 +54,10 @@ def font_render(text, x, y, color, screen, size):
 def game(face_position, camera):
     config.clock.tick(config.fps)
 
+    # считаем расстояние между трубами в зависимости от фпс
+    # иначе при низком фпс трубы спавняться вплотную
+    config.pipe_frequency = int(800 / (config.clock.get_fps()/100 + 0.01))
+
     # отрисовываем фон
     config.screen.blit(config.background, (0, 0))
 

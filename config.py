@@ -56,7 +56,8 @@ button = btn.Button(center_of_width - 50, center_of_height - 100, button_image)
 # вертикальное растояние между трубами
 pipe_gap = 150
 # время в мс через которое появляются новые трубы
-pipe_frequency = 2000
+pipe_frequency = 1000
+
 # смотрим сколько времени прошло от создания прошлой трубы
 last_pipe = pygame.time.get_ticks() - pipe_frequency
 # параметр для отслеживания, что птичка прошла сквозь трубы
