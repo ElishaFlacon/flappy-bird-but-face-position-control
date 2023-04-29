@@ -6,10 +6,15 @@ import src.camera.camera as cam
 
 recognizer = ai.Ai('src/ai/haarcascade_frontalface_default.xml')
 camera = cam.Camera()
+game = game.Game(
+    config.fps,
+    config.data,
+    screen_size=config.screen_size
+)
 
 
 def main():
-    while (config.run):
+    while (game.run):
         # читаем кадры с камеры
         camera.read()
 
@@ -27,13 +32,10 @@ def main():
         camera.show(config.video_caption)
 
         # обрабатываем игру
-        game.game(recognizer.face_position, camera)
+        game.play(recognizer.face_position, camera)
 
 
-# иф наме равно майн то бла бла бла
 if __name__ == '__main__':
     main()
 
-
-# офаем
-game.close_game()
+game.close()

@@ -1,5 +1,4 @@
 import pygame
-import config
 
 
 class Button():
@@ -8,7 +7,7 @@ class Button():
         self.rect = self.image.get_rect()
         self.rect.topleft = (x, y)
 
-    def draw(self):
+    def draw(self, screen):
         mouse_position = pygame.mouse.get_pos()
         action = False
 
@@ -18,6 +17,6 @@ class Button():
                 action = True
 
         # открисовка кнопки
-        config.screen.blit(self.image, (self.rect.x, self.rect.y))
+        screen.blit(self.image, (self.rect.x, self.rect.y))
 
         return action
