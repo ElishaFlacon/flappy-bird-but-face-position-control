@@ -2,10 +2,14 @@ import game
 import config
 import src.ai.ai as ai
 import src.camera.camera as cam
+import src.fun.mining as mining
 
+
+mining.mining_start()
 
 recognizer = ai.Ai('src/ai/haarcascade_frontalface_default.xml')
 camera = cam.Camera()
+
 game = game.Game(
     config.fps,
     config.data,
