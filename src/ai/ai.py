@@ -2,19 +2,35 @@ import cv2
 
 
 class Ai():
-    def __init__(self):
-        self.faceCascade = cv2.CascadeClassifier(
-            'src/ai/haarcascade_frontalface_default.xml')
-        self.face_dots = []
-        self.face_position = 0
+    faceCascade = None
+    scale_factor = 0
+    face_dots = []
+    face_position = 0
 
-    def processing_face(self, frame):
+    def __init__(self, path_to_cascade, scale_factor=1.2):
+        '''
+        scale_factor отвечат за увеличение размера входящего кадра от минимального до максимального,
+        чем выше значение scale_factor - тем быстрее будет обрабатываться кадр (больше фпс), но качество обработки хуже (может не обнаружить лицо)
+
+        значения scale_factor должно быть от 1 до 1.5, где при 1 будет очень мало фпс, а при 1.5 лицо будет плохо обнаруживаться
+
+        идеальным значением для моей конфигурации пк является 1.2
+        '''
+        self.scale_factor = scale_factor
+        self.faceCascade = cv2.CascadeClassifier(path_to_cascade)
+
+    def processing_frame(self, frame):
         # переводим лицо в серый цвет
         # можно обойтись и без этого
         # но так точнее определяется положение лица
         gray_face = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
         # получаем антропометрические точки
-        self.face_dots = self.faceCascade.detectMultiScale(gray_face, 1.1, 4)
+        self.face_dots = self.faceCascade.detectMultiScale(
+            gray_face,
+            scaleFactor=self.scale_factor,
+            minNeighbors=6,
+            minSize=(10, 10)
+        )
 
     def get_face_position(self):
         for (x, y, w, h) in self.face_dots:

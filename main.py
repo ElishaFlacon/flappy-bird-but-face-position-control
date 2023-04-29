@@ -4,7 +4,7 @@ import src.ai.ai as ai
 import src.camera.camera as cam
 
 
-recognizer = ai.Ai()
+recognizer = ai.Ai('src/ai/haarcascade_frontalface_default.xml')
 camera = cam.Camera()
 
 
@@ -14,7 +14,7 @@ def main():
         camera.read()
 
         # обрабатываем кадры
-        recognizer.processing_face(camera.frame)
+        recognizer.processing_frame(camera.frame)
 
         # получаем позицию лица
         recognizer.get_face_position()
