@@ -15,6 +15,9 @@ import src.props.pipe as pipe
 '''
 
 
+random.seed()
+
+
 def feetch_data():
     config.data.get_data()
     config.max_score = config.data.data.get('max_score')
@@ -54,7 +57,7 @@ def font_render(text, x, y, color, screen, size):
 def game(face_position, camera):
     config.clock.tick(config.fps)
 
-    # считаем расстояние между трубами в зависимости от фпс
+    # считаем горизонтальное расстояние между трубами в зависимости от фпс
     # иначе при низком фпс трубы спавняться вплотную
     config.pipe_frequency = int(800 / (config.clock.get_fps()/100 + 0.01))
 
@@ -101,14 +104,14 @@ def game(face_position, camera):
                 ((config.center_of_height) + pipe_height),
                 1,
                 config.scroll_speed,
-                config.pipe_gap
+                random.randint(140, 220)
             )
             bottom_pipe = pipe.Pipe(
                 config.screen_width,
                 ((config.center_of_height) + pipe_height),
                 -1,
                 config.scroll_speed,
-                config.pipe_gap
+                random.randint(140, 220)
             )
 
             config.pipe_group.add(bottom_pipe)

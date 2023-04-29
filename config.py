@@ -54,6 +54,7 @@ bird_group.add(flappy)
 button = btn.Button(center_of_width - 50, center_of_height - 100, button_image)
 
 # вертикальное растояние между трубами
+# свойство не используется, но останется (not used)
 pipe_gap = 150
 # время в мс через которое появляются новые трубы
 pipe_frequency = 1000
