@@ -52,6 +52,8 @@
  📺 Демо:
 </h2>
 
+- <a href="https://github-production-user-asset-6210df.s3.amazonaws.com/83610362/231952457-775c2fae-ed60-47f4-b3c9-97c64f4171b7.mp4">Нажать чтобы демо!</a>
+
 <p align="center">
      <video src="https://github-production-user-asset-6210df.s3.amazonaws.com/83610362/231952457-775c2fae-ed60-47f4-b3c9-97c64f4171b7.mp4" alt="А ГДЕ? ТУТ ДОЛЖНО БЫТЬ ВИДЕО!" controls align="center" />
 </p>
